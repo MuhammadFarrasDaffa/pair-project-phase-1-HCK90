@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Elektronik"
+  },
+  {
+    "id": 2,
+    "name": "Fashion Pria"
+  },
+  {
+    "id": 3,
+    "name": "Fashion Wanita"
+  },
+  {
+    "id": 4,
+    "name": "Peralatan Rumah Tangga"
+  },
+  {
+    "id": 5,
+    "name": "Kesehatan & Kecantikan"
+  },
+  {
+    "id": 6,
+    "name": "Makanan & Minuman"
+  },
+  {
+    "id": 7,
+    "name": "Olahraga"
+  },
+  {
+    "id": 8,
+    "name": "Buku & Alat Tulis"
+  },
+  {
+    "id": 9,
+    "name": "Otomotif"
+  },
+  {
+    "id": 10,
+    "name": "Mainan & Hobi"
+  }
+]

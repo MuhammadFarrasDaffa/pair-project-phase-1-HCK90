@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Products</h1>
+
+    <a href="/logout"> <button> Logout </button></a>
+
+    <a href="/products/add"><button>Add</button></a>
+
+    <h5>Hello <%= session.username %>, role kamu adalah <%= session.role %></h5>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Product Picture</th>
+            <th>Category</th>
+            <th>Action</th>
+        </tr>
+
+        <% data.forEach(el => { %>
+            <tr>
+                <td><%= el.id %></td>
+                <td><%= el.name %></td>
+                <td><%= el.description %></td>
+                <td><%= getIDR(el.price) %></td>
+                <td><img style="width: 150px;" src="<%= el.productPicture %>" alt=""></td>
+                <td><%= el.Category.name %></td>
+                <td>
+                    <a href="/products/edit/<%= el.id %>"><button>Edit</button></a>
+                    <a href="/products/delete/<%= el.id %>"><button>Delete</button></a>
+                </td>
+            </tr>
+        <% }) %>
+    </table>
+    
+</body>
+</html>
