@@ -157,10 +157,10 @@
 
         <div class="form-group">
         <label for="">Category</label>
-        <select name="categoryId" id="">
+        <select name="CategoryId" id="">
             <option selected disabled>Choose..</option>
         <% categories.forEach(el => { %>
-            <option value="<%= el.id %>" <%= data.categoryId === el.id ? "selected" : ""  %>><%= el.name %></option>
+            <option value="<%= el.id %>" <%= data.CategoryId === el.id ? "selected" : ""  %>><%= el.name %></option>
         <% }) %>
         </select><br>
         </div>
