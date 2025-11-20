@@ -20,6 +20,8 @@ app.use(session({
     }
 }))
 
+app.use(express.static('public'));
+
 app.use(router)
 
 app.listen(port, () => {

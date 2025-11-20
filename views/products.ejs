@@ -4,27 +4,321 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 32px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-logout {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-logout:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+        }
+
+        .btn-add {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-add:hover {
+            background: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+        }
+
+        .btn-profile {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-profile:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-cart {
+            background: #ff9800;
+            color: white;
+        }
+
+        .btn-cart:hover {
+            background: #e68900;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
+        }
+
+        .welcome-message {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 20px;
+            padding: 12px 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid #667eea;
+        }
+
+        .welcome-message strong {
+            color: #333;
+        }
+
+        .error-message {
+            color: #dc3545;
+            background: #f8d7da;
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border-left: 4px solid #dc3545;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 10px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 15px 10px;
+            border-bottom: 1px solid #e0e0e0;
+            color: #555;
+            font-size: 14px;
+            vertical-align: middle;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: #f8f9fa;
+            transition: background 0.2s ease;
+        }
+
+        .product-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .btn-edit {
+            padding: 6px 12px;
+            background: #ffc107;
+            color: #333;
+            border: none;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s ease;
+        }
+
+        .btn-edit:hover {
+            background: #e0a800;
+            transform: translateY(-1px);
+        }
+
+        .btn-delete {
+            padding: 6px 12px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s ease;
+        }
+
+        .btn-delete:hover {
+            background: #c82333;
+            transform: translateY(-1px);
+        }
+
+        .btn-add-cart {
+            padding: 6px 12px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-add-cart:hover {
+            background: #218838;
+            transform: translateY(-1px);
+        }
+
+        .price-cell {
+            font-weight: 600;
+            color: #28a745;
+        }
+
+        .stock-cell {
+            font-weight: 600;
+        }
+
+        .stock-low {
+            color: #dc3545;
+        }
+
+        .stock-ok {
+            color: #28a745;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                padding: 25px 15px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 10px 8px;
+            }
+
+            .product-image {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-buttons {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn, .btn-edit, .btn-delete, .btn-add-cart {
+                font-size: 11px;
+                padding: 5px 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-
+    <div class="container">
     <%- include('partial/_navbar.ejs') %>
 
-    <h1>Products</h1>
+        <div class="header">
+            <h1>Products</h1>
 
-    <form action="/products" method="get">
-        <input type="text" name="search" placeholder="search by product name..">
-        <input type="submit" value="search">
-    </form>
+            <h3>Hello <%= session.username %>, your role is <%= session.role %></h3>
+            
+            <form action="/products" method="get">
+                <input type="text" name="search" placeholder="search by product name..">
+                <input type="submit" value="search">
+            </form>
 
-    <a href="/logout"> <button> Logout </button></a>
+            <div class="nav-buttons">
+                <a href="/logout"> <button> Logout </button></a>
+                <a href="/products/add"><button>Add</button></a>
+                <a href="/profile/<%= session.id %>"><button> My Profile </button></a>
+                <a href="/cart"><button>Go to Cart</button></a>
+            </div>
+        </div>
 
-    <a href="/products/add"><button>Add</button></a>
-
-    <a href="/profile/<%= session.id %>"><button> My Profile </button></a>
-
-    <a href="/cart"><button>Go to Cart</button></a>
-
-    <h5>Hello <%= profile.name == null || profile.name === "" ? session.username : profile.name %>, role kamu adalah <%= session.role %></h5>
+    <div class="welcome-message">
+    </div>
 
     <% if (error) { %>
         <p style="color: red;"> <%= error %></p>
@@ -34,38 +328,42 @@
         <p style="color: red;"> <%= message %></p>
     <% } %>
 
-    <table border="1">
-        <tr>
-            <th>No</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Stock</th>
-            <th>Product Picture</th>
-            <th>Category</th>
-            <th>Action</th>
-        </tr>
+        <div class="table-container">
+            <table border="1">
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Product Picture</th>
+                    <th>Category</th>
+                    <th>Action</th>
+                </tr>
 
-        <% data.forEach( (el,i) => { %>
-            <tr>
-                <td><%= i + 1 %></td>
-                <td><%= el.name %></td>
-                <td><%= el.description %></td>
-                <td><%= getIDR(el.price) %></td>
-                <td><%= el.stock %></td>
-                <td><img style="width: 150px;" src="<%= el.productPicture %>" alt=""></td>
-                <td><%= el.Category.name %></td>
-                <td>
-                    <a href="/products/edit/<%= el.id %>"><button>Edit</button></a>
-                    <a href="/products/delete/<%= el.id %>"><button>Delete</button></a>
-                    <form action="/add-to-cart" method="POST" style="display:inline;">
-                        <input type="hidden" name="productId" value="<%= el.id %>">
-                        <button type="submit" <%= el.stock > 0 ? "" : "disabled" %>>Add to Cart</button>
-                    </form>
-                </td>
-            </tr>
-        <% }) %>
-    </table>
-    
+                <% data.forEach( (el,i) => { %>
+                    <tr>
+                        <td><%= i + 1 %></td>
+                        <td><%= el.name %></td>
+                        <td><%= el.description %></td>
+                        <td><%= getIDR(el.price) %></td>
+                        <td><%= el.stock %></td>
+                        <td><img style="width: 150px;" src="<%= el.productPicture %>" alt=""></td>
+                        <td><%= el.Category.name %></td>
+                        <td>
+                            <div class="action-buttons">
+                            <a href="/products/edit/<%= el.id %>"><button>Edit</button></a>
+                            <a href="/products/delete/<%= el.id %>"><button>Delete</button></a>
+                            <form action="/add-to-cart" method="POST" style="display:inline;">
+                                <input type="hidden" name="productId" value="<%= el.id %>">
+                                <button type="submit" <%= el.stock > 0 ? "" : "disabled" %>>Add to Cart</button>
+                            </form>
+                            </div>
+                        </td>
+                    </tr>
+                <% }) %>
+            </table>
+        </div>
+    </div>
 </body>
 </html>

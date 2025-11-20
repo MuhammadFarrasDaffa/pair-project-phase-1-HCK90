@@ -4,14 +4,153 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>History</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 32px;
+            text-align: center;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        th:first-child {
+            text-align: center;
+            width: 60px;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            color: #555;
+            font-size: 14px;
+        }
+
+        td:first-child {
+            text-align: center;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: #f8f9fa;
+            transition: background 0.2s ease;
+        }
+
+        .product-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .price-cell {
+            font-weight: 600;
+            color: #28a745;
+        }
+
+        .date-cell {
+            color: #6c757d;
+            font-size: 13px;
+        }
+
+        .empty-history {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6c757d;
+        }
+
+        .empty-history h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px 15px;
+            }
+
+            h1 {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 10px 8px;
+            }
+
+            th {
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            th:first-child,
+            td:first-child {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-
+    <div class="container">
     <%- include('partial/_navbar.ejs') %>
 
     <h1> My History </h1>
 
-    <a href="/profiles/<%= data[0] %>"> Back </a>
+        <div class="table-container">
+
+    <a href="/profile/<%= userId %>"> <button> Back to profile </button></a>
+    <a href="/invoice"> <button> My Invoice </button></a>
+    <br><br>
 
     <table border="1">
         <tr>
@@ -34,6 +173,7 @@
              </tr>
         <% }) %>
     </table>
-    
+     </div>
+ </div>
 </body>
 </html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Invoice Preview</h1>
+
+    <!-- Tombol download -->
+
+    <a href="/profile/history/<%= UserId %>"> <button> Back to History </button></a>
+
+    <a href="<%= pdfUrl %>" download class="btn btn-primary"> <button> Download Invoice </button></a>
+    <br>
+
+    <hr>
+
+    <!-- Preview PDF -->
+    <iframe src="<%= pdfUrl %>" width="100%" height="700px" style="border:1px solid #ccc"></iframe>
+
+
+</body>
+
+</html>

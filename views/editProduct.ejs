@@ -4,39 +4,171 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Product</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 28px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            color: #555;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        select {
+            cursor: pointer;
+            background-color: white;
+        }
+
+        input[type="submit"] {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        input[type="submit"]:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
 </head>
 <body>
-
+    <div class="container">
     <%- include('partial/_navbar.ejs') %>
 
     <h1>Edit Product</h1>
 
+    <% if (errors) { %>
+        <% errors = errors.split(',') %>
+        <% errors.forEach(el => { %>
+            <p style="color: red;"> <%= el %> </p>
+        <% }) %>
+    <% } %>
+    <br>
+
     <form action="/products/edit/<%= data.id %>" method="POST">
 
+        <div class="form-group">
         <label for="">Name</label>
         <input type="text" name="name" value="<%= data.name %>"><br>
+        </div>
+        
+
+        <div class="form-group">
         <label for="">Description</label>
         <input type="text" name="description" value="<%= data.description %>"><br>
+        </div>
+
+        <div class="form-group">
         <label for="">Price</label>
         <input type="number" name="price" value="<%= data.price %>"><br>
+        </div>
+        
+        <div class="form-group">
         <label for="">Stock</label>
         <input type="number" name="stock" value="<%= data.stock %>"><br>
+        </div>
+
+        <div class="form-group">
         <label for="">Image URL</label>
         <input type="text" name="productPicture" value="<%= data.productPicture %>"><br>
-        <label for="">Category</label>
+        </div>
+        
 
+        <div class="form-group">
+        <label for="">Category</label>
         <select name="categoryId" id="">
             <option selected disabled>Choose..</option>
         <% categories.forEach(el => { %>
             <option value="<%= el.id %>" <%= data.categoryId === el.id ? "selected" : ""  %>><%= el.name %></option>
         <% }) %>
         </select><br>
-
+        </div>
         <input type="submit" value="Edit">
 
     </form>
 
-
+</div>
     
 </body>
 </html>
