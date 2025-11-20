@@ -13,7 +13,15 @@
 
     <a href="/products/add"><button>Add</button></a>
 
-    <h5>Hello <%= session.username %>, role kamu adalah <%= session.role %></h5>
+    <a href="/profile/<%= session.id %>"><button> My Profile </button></a>
+
+    <a href="/cart"><button>Go to Cart</button></a>
+
+    <h5>Hello <%= profile.name == null || profile.name === "" ? session.username : profile.name %>, role kamu adalah <%= session.role %></h5>
+
+    <% if (error) { %>
+        <p style="color: red;"> <%= error %></p>
+    <% } %>
 
     <table border="1">
         <tr>
@@ -21,6 +29,7 @@
             <th>Name</th>
             <th>Description</th>
             <th>Price</th>
+            <th>Stock</th>
             <th>Product Picture</th>
             <th>Category</th>
             <th>Action</th>
@@ -32,11 +41,16 @@
                 <td><%= el.name %></td>
                 <td><%= el.description %></td>
                 <td><%= getIDR(el.price) %></td>
+                <td><%= el.stock %></td>
                 <td><img style="width: 150px;" src="<%= el.productPicture %>" alt=""></td>
                 <td><%= el.Category.name %></td>
                 <td>
                     <a href="/products/edit/<%= el.id %>"><button>Edit</button></a>
                     <a href="/products/delete/<%= el.id %>"><button>Delete</button></a>
+                    <form action="/add-to-cart" method="POST" style="display:inline;">
+                        <input type="hidden" name="productId" value="<%= el.id %>">
+                        <button type="submit">Add to Cart</button>
+                    </form>
                 </td>
             </tr>
         <% }) %>

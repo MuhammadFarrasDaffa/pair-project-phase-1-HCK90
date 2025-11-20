@@ -5,6 +5,8 @@ const Controller = require('../controllers/controller')
 
 const routerProduct = require('./product')
 const routerCategory = require('./category')
+const routerProfile = require('./profile')
+const routerCart = require('./cart')
 
 router.get('/', Controller.home)
 
@@ -17,7 +19,6 @@ router.post('/register', Controller.register)
 router.get('/logout', Controller.logout)
 
 router.use(function (req, res, next){
-    console.log(req.session)
     if(!req.session.user){
         res.redirect(`/login?error=Please login first!`)
     }else{
@@ -26,6 +27,10 @@ router.use(function (req, res, next){
 })
 
 router.use('/products', routerProduct)
+
+router.use('/profile', routerProfile)
+
+router.use(routerCart)
 
 // router.use('/categories', routerCategory)
 

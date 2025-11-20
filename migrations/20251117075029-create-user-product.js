@@ -27,6 +27,18 @@ module.exports = {
         onDelete: "cascade",
         onUpdate: "cascade"
       },
+      itemProduct: {
+        type: Sequelize.STRING
+      },
+      itemQuantity: {
+        type: Sequelize.INTEGER
+      },
+      itemPrice: {
+        type: Sequelize.INTEGER
+      },
+      totalPrice: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
