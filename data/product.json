@@ -4,6 +4,7 @@
         "name": "Smartphone X200",
         "description": "Smartphone dengan layar AMOLED 6.5 inci dan baterai besar.",
         "price": 3500000,
+        "stock": 10,
         "productPicture": "https://asia-exstatic-vivofs.vivo.com/PSee2l50xoirPK7y/1733811622016/274f15f6a6ce065c91c06b7246a835c2.png",
         "categoryId": 1
     },
@@ -12,6 +13,7 @@
         "name": "Laptop ProBook 14",
         "description": "Laptop ringan untuk kerja dan multimedia.",
         "price": 6800000,
+        "stock": 10,
         "productPicture": "https://id-media.apjonlinecdn.com/catalog/product/c/0/c08935898.png",
         "categoryId": 1
     },
@@ -20,6 +22,7 @@
         "name": "Earbuds Wireless Z",
         "description": "Earbuds dengan noise cancellation dan kualitas bass kuat.",
         "price": 450000,
+        "stock": 10,
         "productPicture": "https://cdn-img.oraimo.com/fit-in/600x600/GH/product/2024/11/01/spacebuds-z-otw-625-en-black.png",
         "categoryId": 1
     },
@@ -28,6 +31,7 @@
         "name": "Kemeja Formal Pria",
         "description": "Kemeja bahan premium untuk acara resmi.",
         "price": 180000,
+        "stock": 10,
         "productPicture": "https://img.lazcdn.com/g/p/04ac2f513649834051450e7193612c15.jpg_720x720q80.jpg",
         "categoryId": 2
     },
@@ -36,6 +40,7 @@
         "name": "Jaket Denim Pria",
         "description": "Jaket denim kualitas tinggi untuk tampilan stylish.",
         "price": 320000,
+        "stock": 10,
         "productPicture": "https://images-cdn.ubuy.co.in/64ad1698c879ac193b18a65d-men-39-s-denim-jacket-autumn-korean.jpg",
         "categoryId": 2
     },
@@ -44,6 +49,7 @@
         "name": "Celana Chino Slimfit",
         "description": "Celana chino nyaman untuk gaya casual.",
         "price": 210000,
+        "stock": 10,
         "productPicture": "https://www.elfs-shop.com/~img/cjb_chino_cropped_simple_cm1-d0cf7-3073_8443-t2494_81.webp",
         "categoryId": 2
     },
@@ -52,6 +58,7 @@
         "name": "Blouse Casual Wanita",
         "description": "Blouse katun lembut untuk dipakai sehari-hari.",
         "price": 150000,
+        "stock": 10,
         "productPicture": "https://img.lazcdn.com/g/p/127a156966313b90c50b69aac073a397.png_720x720q80.png",
         "categoryId": 3
     },
@@ -60,6 +67,7 @@
         "name": "Dress Midi Floral",
         "description": "Dress motif floral yang elegan dan modern.",
         "price": 280000,
+        "stock": 10,
         "productPicture": "https://images-cdn.ubuy.co.id/68125c618fc11e9fab02049c-simple-flavor-women-s-floral-vintage.jpg",
         "categoryId": 3
     },
@@ -68,6 +76,7 @@
         "name": "Cardigan Rajut Wanita",
         "description": "Cardigan nyaman dengan bahan rajut premium.",
         "price": 195000,
+        "stock": 10,
         "productPicture": "https://i.pinimg.com/736x/4c/10/8d/4c108d80ec7f3b1d2ec51f5dfc79ea5a.jpg",
         "categoryId": 3
     },
@@ -76,6 +85,7 @@
         "name": "Vacuum Cleaner Turbo",
         "description": "Vacuum cleaner dengan teknologi cyclone.",
         "price": 750000,
+        "stock": 10,
         "productPicture": "https://siplah-oss.tokoladang.co.id/merchant/18422/product/sNQQQ17TgaVdB5FYYLkMLeZMbCnwv2wsBfrDosvq.png",
         "categoryId": 4
     },
@@ -84,6 +94,7 @@
         "name": "Rice Cooker Digital",
         "description": "Rice cooker pintar dengan 8 mode masak.",
         "price": 540000,
+        "stock": 10,
         "productPicture": "rice-cooker-digital.jpg",
         "categoryId": 4
     },
@@ -92,6 +103,7 @@
         "name": "Kipas Angin Portable",
         "description": "Kipas USB portabel untuk penggunaan di meja.",
         "price": 85000,
+        "stock": 10,
         "productPicture": "https://web-res.midea.com/content/dam/toshiba-aem/id/cq5dam-compression.webp",
         "categoryId": 4
     },
@@ -100,6 +112,7 @@
         "name": "Face Serum Glow",
         "description": "Serum vitamin C untuk mencerahkan kulit.",
         "price": 120000,
+        "stock": 10,
         "productPicture": "https://www.sariayu.com/img/bbef0-600x600%20hydra%20glow.png",
         "categoryId": 5
     },
@@ -108,6 +121,7 @@
         "name": "Moisturizer HydraSoft",
         "description": "Krim pelembab yang cocok untuk semua jenis kulit.",
         "price": 99000,
+        "stock": 10,
         "productPicture": "https://www.synergytherm.com/wp-content/uploads/2024/11/hydra-soft-img.jpg",
         "categoryId": 5
     },
@@ -116,6 +130,7 @@
         "name": "Sampo Anti-Rambut Rontok",
         "description": "Sampo dengan formula ginseng untuk rambut kuat.",
         "price": 68000,
+        "stock": 10,
         "productPicture": "https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2024/09/10061118/reco-shampoo.jpg",
         "categoryId": 5
     },
@@ -124,6 +139,7 @@
         "name": "Kopi Arabica Premium",
         "description": "Biji kopi Arabica kualitas tinggi.",
         "price": 95000,
+        "stock": 10,
         "productPicture": "https://evermos.com/home/wp-content/uploads/2024/02/5fcd2694-7b2a-44e7-b06e-10c10cb40990.jpeg",
         "categoryId": 6
     },
@@ -132,6 +148,7 @@
         "name": "Cokelat Hitam 80%",
         "description": "Cokelat hitam dengan rasa pahit dan manis seimbang.",
         "price": 45000,
+        "stock": 10,
         "productPicture": "https://images.tokopedia.net/img/cache/700/VqbcmM/2024/5/3/3603f3f8-c5d8-465d-97c8-8e2c200a63c0.jpg",
         "categoryId": 6
     },
@@ -140,6 +157,7 @@
         "name": "Madu Hutan Organik",
         "description": "Madu asli tanpa campuran, kaya nutrisi.",
         "price": 130000,
+        "stock": 10,
         "productPicture": "https://img.lazcdn.com/g/p/832df6d2d870dbb4912c13361fbcd842.jpg_720x720q80.jpg",
         "categoryId": 6
     },
@@ -148,6 +166,7 @@
         "name": "Sepatu Lari ProRun",
         "description": "Sepatu untuk jogging dengan bantalan empuk.",
         "price": 420000,
+        "stock": 10,
         "productPicture": "https://img.ncrsport.com/img/storage/large/ID8755-1.jpg",
         "categoryId": 7
     },
@@ -156,6 +175,7 @@
         "name": "Matras Yoga Premium",
         "description": "Matras yoga anti-slip dan empuk.",
         "price": 175000,
+        "stock": 10,
         "productPicture": "https://cdn1.productnation.co/stg/sites/5/5de9cae9e29d5.jpeg",
         "categoryId": 7
     },
@@ -164,6 +184,7 @@
         "name": "Dumbbell Set 10kg",
         "description": "Set dumbbell untuk latihan rumahan.",
         "price": 230000,
+        "stock": 10,
         "productPicture": "https://sdmed.cl/wp-content/uploads/2018/05/par-10kg-600x600.jpg",
         "categoryId": 7
     },
@@ -172,6 +193,7 @@
         "name": "Notebook A5 Premium",
         "description": "Buku catatan dengan kertas tebal.",
         "price": 45000,
+        "stock": 10,
         "productPicture": "https://img.lazcdn.com/g/p/bccbd56919755280d1c7ba7f1ce01f7f.jpg_720x720q80.jpg",
         "categoryId": 8
     },
@@ -180,6 +202,7 @@
         "name": "Pulpen Gel Hitam",
         "description": "Pulpen gel dengan tinta pekat dan halus.",
         "price": 8000,
+        "stock": 10,
         "productPicture": "https://ae-pic-a1.aliexpress-media.com/kf/S2dbc0b9bc7fb4dd4923edda8a488d741y.jpg",
         "categoryId": 8
     },
@@ -188,6 +211,7 @@
         "name": "Sticky Notes Warna",
         "description": "Sticky notes warna-warni ukuran mini.",
         "price": 15000,
+        "stock": 10,
         "productPicture": "https://filebroker-cdn.lazada.co.id/kf/Sa93816a4554c42c7b7d4093f6e7e0ab8C.jpg",
         "categoryId": 8
     },
@@ -196,6 +220,7 @@
         "name": "Helm Motor Full Face",
         "description": "Helm bersertifikasi SNI.",
         "price": 560000,
+        "stock": 10,
         "productPicture": "https://www.hondabikersaceh.com/assets/images/5dba5ebf61241_ori.jpg",
         "categoryId": 9
     },
@@ -204,6 +229,7 @@
         "name": "Sarung Tangan Motor",
         "description": "Sarung tangan nyaman dan tahan angin.",
         "price": 65000,
+        "stock": 10,
         "productPicture": "https://momotor.id/news/wp-content/uploads/2023/01/Respiro-Mezo-R-1024x576.jpg",
         "categoryId": 9
     },
@@ -212,6 +238,7 @@
         "name": "Oli Mesin Premium",
         "description": "Oli mesin untuk performa maksimal.",
         "price": 98000,
+        "stock": 10,
         "productPicture": "https://img.lazcdn.com/g/p/3f745d4bb082f3dd1d1946a6c2e20c62.jpg_720x720q80.jpg",
         "categoryId": 9
     },
@@ -220,6 +247,7 @@
         "name": "Action Figure Hero",
         "description": "Action figure karakter populer.",
         "price": 240000,
+        "stock": 10,
         "productPicture": "https://bleedingcool.com/wp-content/uploads/2025/11/a54f74d9-0ef6-4d57-a54b-801e643195c0.jpeg",
         "categoryId": 10
     },
@@ -228,6 +256,7 @@
         "name": "Puzzle Kayu 3D",
         "description": "Puzzle kayu untuk merangsang kreativitas.",
         "price": 110000,
+        "stock": 10,
         "productPicture": "https://images-cdn.ubuy.co.id/66fd5ed4dff16d0103293397-double-lock-a-ball-brain-teaser.jpg",
         "categoryId": 10
     },
@@ -236,6 +265,7 @@
         "name": "Drone Mini RC",
         "description": "Drone kecil dengan kontrol mudah.",
         "price": 350000,
+        "stock": 10,
         "productPicture": "https://wia.id/media/catalog/product/cache/370e25088287db5a45cefe591bb80b7f_ultra80080025.webp",
         "categoryId": 10
     }

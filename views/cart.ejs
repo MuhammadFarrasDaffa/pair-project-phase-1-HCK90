@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+</head>
+<body>
+
+    <h1>Your Cart</h1>
+
+    <a href="/products"><button> Back to Products </button></a><br><br>
+
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Product</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Action</th>
+        </tr>
+
+        <% cart.forEach(item => { %>
+        <tr>
+            <td><%= item.name %></td>
+
+            <td>
+                <form action="/cart/update" method="POST">
+                    <input type="hidden" name="productId" value="<%= item.productId %>">
+                    <input type="number" name="qty" value="<%= item.qty %>" min="1">
+                    <button type="submit">Update</button>
+                </form>
+            </td>
+
+            <td>Rp <%= item.price %></td>
+            <td>Rp <%= item.price * item.qty %></td>
+
+            <td>
+                <a href="/cart/remove/<%= item.productId %>">Remove</a>
+            </td>
+        </tr>
+        <% }) %>
+    </table>
+
+    <h2>Total Belanja: Rp <%= total %></h2>
+
+    <form action="/cart/checkout" method="post">
+        <% cart.forEach(item => { %>
+            <input type="hidden" name="userId" value="<%= user.id %>">
+            <input type="hidden" name="productId" value="<%= item.productId %>">
+            <input type="hidden" name="itemProduct" value="<%= item.name %>">
+            <input type="hidden" name="itemQuantity" value="<%= item.qty %>">
+            <input type="hidden" name="itemPrice" value="<%= item.price %>">
+            <input type="hidden" name="totalPrice" value="<%= item.price * item.qty %>">
+        <% }) %>
+
+        <input type="submit" value=" Checkout ">
+    </form>
+    
+</body>
+</html>

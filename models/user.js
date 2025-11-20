@@ -82,9 +82,10 @@ module.exports = (sequelize, DataTypes) => {
     console.log(user, "<------- INI DALAM HOOK");
     const salt = bcrypt.genSaltSync(10)
     const hash = bcrypt.hashSync(user.password, salt)
-    user.password = hash
     
+    user.password = hash
     user.role = "Member"
+
   })
 
   return User;

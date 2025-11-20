@@ -1,4 +1,4 @@
-const { Product, Category, User, } = require('../models/index')
+const { Product, Category, User, Profile, UserProduct } = require('../models/index')
 const { getIDR } = require('../helpers/helper')
 const bcrypt = require('bcryptjs')
 
@@ -31,7 +31,7 @@ class Controller {
                 throw new Error("Invalid email / password!")
             }
 
-            req.session.user = { id : data.id, username: data.username, email: data.email, role: data.role }
+            req.session.user = { id: data.id, username: data.username, email: data.email, role: data.role }
 
             res.redirect('/products')
 
@@ -58,7 +58,11 @@ class Controller {
                 throw new Error("Password not match with Confirm Password column")
             }
 
-            await User.create({ username, password, email })
+            const newUser = await User.create({ username, password, email })
+
+            await Profile.create({
+                userId: newUser.id
+            })
 
             res.redirect('/login')
 
@@ -78,21 +82,75 @@ class Controller {
         }
     }
 
-    static logout(req, res){
-        req.session.destroy(function(error) {
-            if(error){
+    static logout(req, res) {
+        req.session.destroy(function (error) {
+            if (error) {
                 console.log(error);
                 res.send(error)
-            }else{
+            } else {
                 res.redirect('/login')
             }
         })
+    }
+
+    static async userProfile(req, res) {
+        try {
+            const { userId } = req.params
+
+            const data = await Profile.findByPk(userId)
+
+            res.render("profile", { data })
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
+
+    static async editUserProfile(req, res) {
+        try {
+
+            const { userId } = req.params
+
+            const { name, address, profilePicture } = req.body
+
+            await Profile.update({ name, address, profilePicture }, {
+                where: {
+                    userId
+                }
+            })
+
+            res.redirect(`/profile/${userId}`)
+
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
+
+    static async userHistory(req, res) {
+        try {
+
+            const { userId } = req.params
+
+            const data = await UserProduct.findAll({
+                where :{
+                    userId
+                }
+            })
+
+            res.render("historyUser", { data })
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
     }
 
     //! ---------- Products ----------------
 
     static async getProducts(req, res) {
         try {
+
+            const { error } = req.query
 
             const session = req.session.user
 
@@ -104,10 +162,13 @@ class Controller {
                 order: [['id']]
             })
 
-            // console.log(session, "session di get product");
-            
-            // res.send(data)
-            res.render('products', { data, getIDR, session })
+            const profile = await Profile.findOne({
+                where: {
+                    userId: session.id
+                }
+            })
+
+            res.render('products', { data, getIDR, session, profile, error })
         } catch (error) {
             console.log(error);
             res.send(error)
@@ -181,7 +242,7 @@ class Controller {
 
             await Product.destroy({
                 where: {
-                    id : productId
+                    id: productId
                 }
             })
 
