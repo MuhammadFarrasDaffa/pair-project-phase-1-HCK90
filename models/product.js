@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     static associate(models) {
-      // User.belongsToMany(Profile, { through: 'User_Profiles' })
-      Product.belongsTo(models.Category, {foreignKey: "categoryId"})
+      Product.belongsTo(models.Category)
+      Product.belongsToMany(models.User, {through: "UserProduct"})
     }
   }
   Product.init({
@@ -93,17 +93,17 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    categoryId: {
+    CategoryId: {
       type :DataTypes.INTEGER,
       allowNull : false,
       validate:{
         notNull: {
           args : true,
-          msg : "Product CategoryId is required!"
+          msg : "Product Category is required!"
         },
         notEmpty: {
           args : true,
-          msg : "Product CategoryId is required!"
+          msg : "Product Category is required!"
         }
       }
     }

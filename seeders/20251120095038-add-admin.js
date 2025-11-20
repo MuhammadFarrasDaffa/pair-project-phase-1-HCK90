@@ -15,7 +15,7 @@ module.exports = {
 
     await queryInterface.bulkInsert("Users", data, {})
 
-    await Profile.create({userId : 1})
+    await Profile.create({UserId : 1})
   },
 
   async down (queryInterface, Sequelize) {

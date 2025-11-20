@@ -4,9 +4,9 @@ const router = express.Router()
 const Controller = require('../controllers/controller')
 
 const routerProduct = require('./product')
-const routerCategory = require('./category')
 const routerProfile = require('./profile')
 const routerCart = require('./cart')
+const InvoiceController = require('../controllers/invoiceController');
 
 router.get('/', Controller.home)
 
@@ -32,6 +32,7 @@ router.use('/profile', routerProfile)
 
 router.use(routerCart)
 
-// router.use('/categories', routerCategory)
+// Generate + Preview + Download
+router.get('/invoice', InvoiceController.generateInvoice);
 
 module.exports = router

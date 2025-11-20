@@ -1,5 +1,6 @@
 const { Product, UserProduct } = require('../models/index')
 
+
 class CartController {
 
     static async addToCart(req, res) {
@@ -97,8 +98,8 @@ class CartController {
                 }
 
                 await UserProduct.create({
-                    userId,
-                    productId,
+                    UserId : userId,
+                    ProductId : productId,
                     itemProduct,
                     itemQuantity,
                     itemPrice,
@@ -122,8 +123,8 @@ class CartController {
                     const product = await Product.findProduct(productId[j])
 
                     await UserProduct.create({
-                        userId: userId[j],
-                        productId: productId[j],
+                        UserId: userId[j],
+                        ProductId: productId[j],
                         itemProduct: itemProduct[j],
                         itemQuantity: itemQuantity[j],
                         itemPrice: itemPrice[j],

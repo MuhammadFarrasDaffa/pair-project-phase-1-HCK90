@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs')
 class Controller {
 
     static home(req, res) {
-        res.redirect('/products')
+        res.render('home')
     }
 
     static loginForm(req, res) {
@@ -62,7 +62,7 @@ class Controller {
             const newUser = await User.create({ username, password, email })
 
             await Profile.create({
-                userId: newUser.id
+                UserId: newUser.id
             })
 
             res.redirect('/login')
@@ -96,11 +96,14 @@ class Controller {
 
     static async userProfile(req, res) {
         try {
+
+            const { error } = req.query
+
             const { userId } = req.params
 
             const data = await Profile.findByPk(userId)
 
-            res.render("profile", { data })
+            res.render("profile", { data, error })
         } catch (error) {
             console.log(error);
             res.send(error)
@@ -116,7 +119,7 @@ class Controller {
 
             await Profile.update({ name, address, profilePicture }, {
                 where: {
-                    userId
+                    UserId : userId
                 }
             })
 
@@ -135,11 +138,11 @@ class Controller {
 
             const data = await UserProduct.findAll({
                 where: {
-                    userId
+                    UserId : userId
                 }
-            })
+            })               
 
-            res.render("historyUser", { data })
+            res.render("historyUser", { data, userId })
         } catch (error) {
             console.log(error);
             res.send(error)
@@ -163,11 +166,15 @@ class Controller {
                 order: [['id']]
             })
 
+            console.log(session, "ini session");
+            
+
             const profile = await Profile.findOne({
                 where: {
-                    userId: session.id
+                    UserId : session.id
                 }
             })
+            
 
             if (search) {
                 data = await Product.findAll({
@@ -193,8 +200,10 @@ class Controller {
 
     static async addProductForm(req, res) {
         try {
+            const { errors } = req.query
+
             const categories = await Category.findAll()
-            res.render('addProduct', { categories })
+            res.render('addProduct', { categories, errors })
         } catch (error) {
             console.log(error);
             res.send(error)
@@ -214,9 +223,11 @@ class Controller {
                 error = error.errors.map(el => {
                     return el.message
                 })
+                res.redirect(`/products/add?errors=${error}`)
             } else {
-                res.redirect(`/register?errors=${error}`)
+                // res.redirect(`/register?errors=${error}`)
                 console.log(error);
+                res.send(error)
             }
         }
     }
@@ -224,13 +235,17 @@ class Controller {
     static async editProductForm(req, res) {
         try {
 
+            const { errors } = req.query
+
             const { productId } = req.params
 
             const data = await Product.findProduct(productId)
 
             const categories = await Category.findAll()
 
-            res.render('editProduct', { data, categories })
+            res.render('editProduct', { data, categories, errors })
+
+            
         } catch (error) {
             console.log(error);
             res.send(error)
@@ -253,8 +268,17 @@ class Controller {
             res.redirect('/products')
 
         } catch (error) {
-            console.log(error);
-            res.send(error)
+            const { productId } = req.params
+
+            if (error.name === "SequelizeValidationError" || error.name === "SequelizeUniqueConstraintError") {
+                error = error.errors.map(el => {
+                    return el.message
+                })
+                res.redirect(`/products/edit/${productId}?errors=${error}`)
+            } else {
+                console.log(error)
+                res.send(error)
+            }
         }
     }
 

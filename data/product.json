@@ -6,7 +6,7 @@
         "price": 3500000,
         "stock": 10,
         "productPicture": "https://asia-exstatic-vivofs.vivo.com/PSee2l50xoirPK7y/1733811622016/274f15f6a6ce065c91c06b7246a835c2.png",
-        "categoryId": 1
+        "CategoryId": 1
     },
     {
         "id": 2,
@@ -15,7 +15,7 @@
         "price": 6800000,
         "stock": 10,
         "productPicture": "https://id-media.apjonlinecdn.com/catalog/product/c/0/c08935898.png",
-        "categoryId": 1
+        "CategoryId": 1
     },
     {
         "id": 3,
@@ -24,7 +24,7 @@
         "price": 450000,
         "stock": 10,
         "productPicture": "https://cdn-img.oraimo.com/fit-in/600x600/GH/product/2024/11/01/spacebuds-z-otw-625-en-black.png",
-        "categoryId": 1
+        "CategoryId": 1
     },
     {
         "id": 4,
@@ -33,7 +33,7 @@
         "price": 180000,
         "stock": 10,
         "productPicture": "https://img.lazcdn.com/g/p/04ac2f513649834051450e7193612c15.jpg_720x720q80.jpg",
-        "categoryId": 2
+        "CategoryId": 2
     },
     {
         "id": 5,
@@ -42,7 +42,7 @@
         "price": 320000,
         "stock": 10,
         "productPicture": "https://images-cdn.ubuy.co.in/64ad1698c879ac193b18a65d-men-39-s-denim-jacket-autumn-korean.jpg",
-        "categoryId": 2
+        "CategoryId": 2
     },
     {
         "id": 6,
@@ -51,7 +51,7 @@
         "price": 210000,
         "stock": 10,
         "productPicture": "https://www.elfs-shop.com/~img/cjb_chino_cropped_simple_cm1-d0cf7-3073_8443-t2494_81.webp",
-        "categoryId": 2
+        "CategoryId": 2
     },
     {
         "id": 7,
@@ -60,7 +60,7 @@
         "price": 150000,
         "stock": 10,
         "productPicture": "https://img.lazcdn.com/g/p/127a156966313b90c50b69aac073a397.png_720x720q80.png",
-        "categoryId": 3
+        "CategoryId": 3
     },
     {
         "id": 8,
@@ -69,7 +69,7 @@
         "price": 280000,
         "stock": 10,
         "productPicture": "https://images-cdn.ubuy.co.id/68125c618fc11e9fab02049c-simple-flavor-women-s-floral-vintage.jpg",
-        "categoryId": 3
+        "CategoryId": 3
     },
     {
         "id": 9,
@@ -78,7 +78,7 @@
         "price": 195000,
         "stock": 10,
         "productPicture": "https://i.pinimg.com/736x/4c/10/8d/4c108d80ec7f3b1d2ec51f5dfc79ea5a.jpg",
-        "categoryId": 3
+        "CategoryId": 3
     },
     {
         "id": 10,
@@ -87,7 +87,7 @@
         "price": 750000,
         "stock": 10,
         "productPicture": "https://siplah-oss.tokoladang.co.id/merchant/18422/product/sNQQQ17TgaVdB5FYYLkMLeZMbCnwv2wsBfrDosvq.png",
-        "categoryId": 4
+        "CategoryId": 4
     },
     {
         "id": 11,
@@ -96,7 +96,7 @@
         "price": 540000,
         "stock": 10,
         "productPicture": "rice-cooker-digital.jpg",
-        "categoryId": 4
+        "CategoryId": 4
     },
     {
         "id": 12,
@@ -105,7 +105,7 @@
         "price": 85000,
         "stock": 10,
         "productPicture": "https://web-res.midea.com/content/dam/toshiba-aem/id/cq5dam-compression.webp",
-        "categoryId": 4
+        "CategoryId": 4
     },
     {
         "id": 13,
@@ -114,7 +114,7 @@
         "price": 120000,
         "stock": 10,
         "productPicture": "https://www.sariayu.com/img/bbef0-600x600%20hydra%20glow.png",
-        "categoryId": 5
+        "CategoryId": 5
     },
     {
         "id": 14,
@@ -123,7 +123,7 @@
         "price": 99000,
         "stock": 10,
         "productPicture": "https://www.synergytherm.com/wp-content/uploads/2024/11/hydra-soft-img.jpg",
-        "categoryId": 5
+        "CategoryId": 5
     },
     {
         "id": 15,
@@ -132,7 +132,7 @@
         "price": 68000,
         "stock": 10,
         "productPicture": "https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2024/09/10061118/reco-shampoo.jpg",
-        "categoryId": 5
+        "CategoryId": 5
     },
     {
         "id": 16,
@@ -141,7 +141,7 @@
         "price": 95000,
         "stock": 10,
         "productPicture": "https://evermos.com/home/wp-content/uploads/2024/02/5fcd2694-7b2a-44e7-b06e-10c10cb40990.jpeg",
-        "categoryId": 6
+        "CategoryId": 6
     },
     {
         "id": 17,
@@ -150,7 +150,7 @@
         "price": 45000,
         "stock": 10,
         "productPicture": "https://images.tokopedia.net/img/cache/700/VqbcmM/2024/5/3/3603f3f8-c5d8-465d-97c8-8e2c200a63c0.jpg",
-        "categoryId": 6
+        "CategoryId": 6
     },
     {
         "id": 18,
@@ -159,7 +159,7 @@
         "price": 130000,
         "stock": 10,
         "productPicture": "https://img.lazcdn.com/g/p/832df6d2d870dbb4912c13361fbcd842.jpg_720x720q80.jpg",
-        "categoryId": 6
+        "CategoryId": 6
     },
     {
         "id": 19,
@@ -168,7 +168,7 @@
         "price": 420000,
         "stock": 10,
         "productPicture": "https://img.ncrsport.com/img/storage/large/ID8755-1.jpg",
-        "categoryId": 7
+        "CategoryId": 7
     },
     {
         "id": 20,
@@ -177,7 +177,7 @@
         "price": 175000,
         "stock": 10,
         "productPicture": "https://cdn1.productnation.co/stg/sites/5/5de9cae9e29d5.jpeg",
-        "categoryId": 7
+        "CategoryId": 7
     },
     {
         "id": 21,
@@ -186,7 +186,7 @@
         "price": 230000,
         "stock": 10,
         "productPicture": "https://sdmed.cl/wp-content/uploads/2018/05/par-10kg-600x600.jpg",
-        "categoryId": 7
+        "CategoryId": 7
     },
     {
         "id": 22,
@@ -195,7 +195,7 @@
         "price": 45000,
         "stock": 10,
         "productPicture": "https://img.lazcdn.com/g/p/bccbd56919755280d1c7ba7f1ce01f7f.jpg_720x720q80.jpg",
-        "categoryId": 8
+        "CategoryId": 8
     },
     {
         "id": 23,
@@ -204,7 +204,7 @@
         "price": 8000,
         "stock": 10,
         "productPicture": "https://ae-pic-a1.aliexpress-media.com/kf/S2dbc0b9bc7fb4dd4923edda8a488d741y.jpg",
-        "categoryId": 8
+        "CategoryId": 8
     },
     {
         "id": 24,
@@ -213,7 +213,7 @@
         "price": 15000,
         "stock": 10,
         "productPicture": "https://filebroker-cdn.lazada.co.id/kf/Sa93816a4554c42c7b7d4093f6e7e0ab8C.jpg",
-        "categoryId": 8
+        "CategoryId": 8
     },
     {
         "id": 25,
@@ -222,7 +222,7 @@
         "price": 560000,
         "stock": 10,
         "productPicture": "https://www.hondabikersaceh.com/assets/images/5dba5ebf61241_ori.jpg",
-        "categoryId": 9
+        "CategoryId": 9
     },
     {
         "id": 26,
@@ -231,7 +231,7 @@
         "price": 65000,
         "stock": 10,
         "productPicture": "https://momotor.id/news/wp-content/uploads/2023/01/Respiro-Mezo-R-1024x576.jpg",
-        "categoryId": 9
+        "CategoryId": 9
     },
     {
         "id": 27,
@@ -240,7 +240,7 @@
         "price": 98000,
         "stock": 10,
         "productPicture": "https://img.lazcdn.com/g/p/3f745d4bb082f3dd1d1946a6c2e20c62.jpg_720x720q80.jpg",
-        "categoryId": 9
+        "CategoryId": 9
     },
     {
         "id": 28,
@@ -249,7 +249,7 @@
         "price": 240000,
         "stock": 10,
         "productPicture": "https://bleedingcool.com/wp-content/uploads/2025/11/a54f74d9-0ef6-4d57-a54b-801e643195c0.jpeg",
-        "categoryId": 10
+        "CategoryId": 10
     },
     {
         "id": 29,
@@ -258,7 +258,7 @@
         "price": 110000,
         "stock": 10,
         "productPicture": "https://images-cdn.ubuy.co.id/66fd5ed4dff16d0103293397-double-lock-a-ball-brain-teaser.jpg",
-        "categoryId": 10
+        "CategoryId": 10
     },
     {
         "id": 30,
@@ -267,6 +267,6 @@
         "price": 350000,
         "stock": 10,
         "productPicture": "https://wia.id/media/catalog/product/cache/370e25088287db5a45cefe591bb80b7f_ultra80080025.webp",
-        "categoryId": 10
+        "CategoryId": 10
     }
 ]
