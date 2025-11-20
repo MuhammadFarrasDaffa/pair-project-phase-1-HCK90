@@ -7,7 +7,14 @@
 </head>
 <body>
 
+    <%- include('partial/_navbar.ejs') %>
+
     <h1>Products</h1>
+
+    <form action="/products" method="get">
+        <input type="text" name="search" placeholder="search by product name..">
+        <input type="submit" value="search">
+    </form>
 
     <a href="/logout"> <button> Logout </button></a>
 
@@ -23,9 +30,13 @@
         <p style="color: red;"> <%= error %></p>
     <% } %>
 
+    <% if (message) { %>
+        <p style="color: red;"> <%= message %></p>
+    <% } %>
+
     <table border="1">
         <tr>
-            <th>ID</th>
+            <th>No</th>
             <th>Name</th>
             <th>Description</th>
             <th>Price</th>
@@ -35,9 +46,9 @@
             <th>Action</th>
         </tr>
 
-        <% data.forEach(el => { %>
+        <% data.forEach( (el,i) => { %>
             <tr>
-                <td><%= el.id %></td>
+                <td><%= i + 1 %></td>
                 <td><%= el.name %></td>
                 <td><%= el.description %></td>
                 <td><%= getIDR(el.price) %></td>
@@ -49,7 +60,7 @@
                     <a href="/products/delete/<%= el.id %>"><button>Delete</button></a>
                     <form action="/add-to-cart" method="POST" style="display:inline;">
                         <input type="hidden" name="productId" value="<%= el.id %>">
-                        <button type="submit">Add to Cart</button>
+                        <button type="submit" <%= el.stock > 0 ? "" : "disabled" %>>Add to Cart</button>
                     </form>
                 </td>
             </tr>
