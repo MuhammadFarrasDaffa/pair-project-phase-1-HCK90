@@ -7,6 +7,8 @@
 </head>
 <body>
 
+    <%- include('partial/_navbar.ejs') %>
+
     <h1>Edit Product</h1>
 
     <form action="/products/edit/<%= data.id %>" method="POST">
@@ -17,6 +19,8 @@
         <input type="text" name="description" value="<%= data.description %>"><br>
         <label for="">Price</label>
         <input type="number" name="price" value="<%= data.price %>"><br>
+        <label for="">Stock</label>
+        <input type="number" name="stock" value="<%= data.stock %>"><br>
         <label for="">Image URL</label>
         <input type="text" name="productPicture" value="<%= data.productPicture %>"><br>
         <label for="">Category</label>

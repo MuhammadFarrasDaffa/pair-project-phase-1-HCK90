@@ -1,5 +1,6 @@
 const { Product, Category, User, Profile, UserProduct } = require('../models/index')
 const { getIDR } = require('../helpers/helper')
+const { Op } = require('sequelize')
 const bcrypt = require('bcryptjs')
 
 class Controller {
@@ -133,7 +134,7 @@ class Controller {
             const { userId } = req.params
 
             const data = await UserProduct.findAll({
-                where :{
+                where: {
                     userId
                 }
             })
@@ -150,11 +151,11 @@ class Controller {
     static async getProducts(req, res) {
         try {
 
-            const { error } = req.query
+            const { error, message, search } = req.query
 
             const session = req.session.user
 
-            const data = await Product.findAll({
+            let data = await Product.findAll({
                 include: [{
                     model: Category,
                     attributes: ['name']
@@ -168,7 +169,22 @@ class Controller {
                 }
             })
 
-            res.render('products', { data, getIDR, session, profile, error })
+            if (search) {
+                data = await Product.findAll({
+                    include: [{
+                        model: Category,
+                        attributes: ['name']
+                    }],
+                    where: {
+                        name: {
+                            [Op.iLike]: `%${search}%`
+                        }
+                    },
+                    order: [['id', 'DESC']]
+                })
+            }
+
+            res.render('products', { data, getIDR, session, profile, error, message })
         } catch (error) {
             console.log(error);
             res.send(error)
@@ -187,15 +203,21 @@ class Controller {
 
     static async addProduct(req, res) {
         try {
-            const { name, description, price, productPicture, categoryId } = req.body
+            const { name, description, price, productPicture, categoryId, stock } = req.body
             // console.log({ name, description, price, productPicture, categoryId });
 
-            await Product.create({ name, description, price, productPicture, categoryId })
+            await Product.create({ name, description, price, productPicture, categoryId, stock })
 
             res.redirect('/products')
         } catch (error) {
-            console.log(error);
-            res.send(error)
+            if (error.name === "SequelizeValidationError" || error.name === "SequelizeUniqueConstraintError") {
+                error = error.errors.map(el => {
+                    return el.message
+                })
+            } else {
+                res.redirect(`/register?errors=${error}`)
+                console.log(error);
+            }
         }
     }
 
@@ -204,7 +226,7 @@ class Controller {
 
             const { productId } = req.params
 
-            const data = await Product.findByPk(productId)
+            const data = await Product.findProduct(productId)
 
             const categories = await Category.findAll()
 
@@ -218,11 +240,11 @@ class Controller {
     static async editProduct(req, res) {
         try {
 
-            const { name, description, price, productPicture, categoryId } = req.body
+            const { name, description, price, productPicture, categoryId, stock } = req.body
 
             const { productId } = req.params
 
-            await Product.update({ name, description, price, productPicture, categoryId }, {
+            await Product.update({ name, description, price, productPicture, categoryId, stock }, {
                 where: {
                     id: productId
                 }
@@ -240,13 +262,17 @@ class Controller {
         try {
             const { productId } = req.params
 
+            const data = await Product.findProduct(productId)
+
+            const message = `Product ${data.name} has been deleted`
+
             await Product.destroy({
                 where: {
                     id: productId
                 }
             })
 
-            res.redirect('/products')
+            res.redirect(`/products?message=${message}`)
         } catch (error) {
             console.log(error);
             res.send(error)
