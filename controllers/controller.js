@@ -212,10 +212,10 @@ class Controller {
 
     static async addProduct(req, res) {
         try {
-            const { name, description, price, productPicture, categoryId, stock } = req.body
+            const { name, description, price, productPicture, CategoryId, stock } = req.body
             // console.log({ name, description, price, productPicture, categoryId });
 
-            await Product.create({ name, description, price, productPicture, categoryId, stock })
+            await Product.create({ name, description, price, productPicture, CategoryId, stock })
 
             res.redirect('/products')
         } catch (error) {
@@ -255,11 +255,11 @@ class Controller {
     static async editProduct(req, res) {
         try {
 
-            const { name, description, price, productPicture, categoryId, stock } = req.body
+            const { name, description, price, productPicture, CategoryId, stock } = req.body
 
             const { productId } = req.params
 
-            await Product.update({ name, description, price, productPicture, categoryId, stock }, {
+            await Product.update({ name, description, price, productPicture, CategoryId, stock }, {
                 where: {
                     id: productId
                 }
