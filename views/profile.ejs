@@ -5,42 +5,262 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 25px;
+        }
+
+        .error-message {
+            color: #dc3545;
+            background: #f8d7da;
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border-left: 4px solid #dc3545;
+            font-size: 14px;
+        }
+
+        .history-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            text-decoration: none;
+        }
+
+        .history-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #667eea;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        details {
+            width: 100%;
+            max-width: 400px;
+            margin-top: 15px;
+        }
+
+        summary {
+            cursor: pointer;
+            padding: 10px 15px;
+            background: #e9ecef;
+            border-radius: 6px;
+            font-weight: 600;
+            color: #333;
+            transition: all 0.2s ease;
+            list-style: none;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary:hover {
+            background: #dee2e6;
+        }
+
+        details[open] summary {
+            margin-bottom: 15px;
+            background: #667eea;
+            color: white;
+        }
+
+        details form {
+            padding: 15px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+        }
+
+        .form-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label, p {
+            color: #333;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        textarea {
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #555;
+            transition: all 0.3s ease;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        input[type="text"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        input[type="text"]::placeholder,
+        textarea::placeholder {
+            color: #aaa;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        input[type="submit"] {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        details form input[type="submit"] {
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <div class="container">
+        <%- include('partial/_navbar.ejs') %>
 
-    <%- include('partial/_navbar.ejs') %>
+        <h1>My Profile</h1>
 
-    <h1> My Profile </h1>
+        <% if (error) { %>
+            <div class="error-message"><%= error %></div>
+        <% } %>
 
-    <% if (error) { %>
-        <p style="color: red;"> <%= error %></p>
-    <% } %>
+        <a href="/profile/history/<%= data.UserId %>" class="history-btn">My History</a>
 
-    <a href="/profile/history/<%= data.UserId %>"><button> My History </button></a><br><br>
+        <div class="profile-section">
+            <img class="profile-image" 
+                 src="<%= data.profilePicture == null || data.profilePicture == '' ? 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' : data.profilePicture %>" 
+                 alt="Profile Picture">
 
-    <img style="width: 150px;" src=" <%= data.profilePicture == null || data.profilePicture == "" ? 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' : data.profilePicture %>" alt="Foto Profile">
+            <details>
+                <summary>Edit Photo</summary>
+                <form action="/profile/<%= data.UserId %>/edit" method="post">
+                    <input type="text" name="profilePicture" placeholder="Input image URL..">
+                    <input type="submit" value="Update Photo">
+                </form>
+            </details>
+        </div>
 
-    <details>
-        <summary>Edit Foto</summary>
+        <div class="form-section">
+            <form action="/profile/<%= data.UserId %>/edit" method="post">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" 
+                           id="name" 
+                           name="name" 
+                           placeholder="Input your name.." 
+                           value="<%= data.name %>">
+                </div>
 
-        <form action="/profile/<%= data.UserId %>/edit" method="post">
-            <input type="text" name="profilePicture" placeholder="input imageURL..">
-            <input type="submit" value="edit">
-        </form>
-    </details><br>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea id="address" 
+                              name="address" 
+                              placeholder="Input your address.."><%= data.address == null ? '' : data.address %></textarea>
+                </div>
 
-    <form action="/profile/<%= data.UserId %>/edit" method="post">
-        <p>Name</p>
-        <input type="text" name="name" placeholder="input your name.." value="<%= data.name %>"><br>
-
-        <p>Address</p>
-        <textarea name="address" placeholder="input your address.."><%= data.address == null ? "" : data.address %></textarea><br>
-
-        <input type="submit" value="Save">
-    </form>
-
-
+                <input type="submit" value="Save Changes">
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>

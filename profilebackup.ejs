@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+
+<body>
+
+    <%- include('partial/_navbar.ejs') %>
+
+    <h1> My Profile </h1>
+
+    <% if (error) { %>
+        <p style="color: red;"> <%= error %></p>
+    <% } %>
+
+    <a href="/profile/history/<%= data.UserId %>"><button> My History </button></a><br><br>
+
+    <img style="width: 150px;" src=" <%= data.profilePicture == null || data.profilePicture == "" ? 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' : data.profilePicture %>" alt="Foto Profile">
+
+    <details>
+        <summary>Edit Foto</summary>
+
+        <form action="/profile/<%= data.UserId %>/edit" method="post">
+            <input type="text" name="profilePicture" placeholder="input imageURL..">
+            <input type="submit" value="edit">
+        </form>
+    </details><br>
+
+    <form action="/profile/<%= data.UserId %>/edit" method="post">
+        <p>Name</p>
+        <input type="text" name="name" placeholder="input your name.." value="<%= data.name %>"><br>
+
+        <p>Address</p>
+        <textarea name="address" placeholder="input your address.."><%= data.address == null ? "" : data.address %></textarea><br>
+
+        <input type="submit" value="Save">
+    </form>
+
+
+</body>
+
+</html>

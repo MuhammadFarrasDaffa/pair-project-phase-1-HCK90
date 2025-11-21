@@ -142,65 +142,38 @@
 </head>
 <body>
     <div class="container">
-        <%- include('partial/_navbar.ejs') %>
+    <%- include('partial/_navbar.ejs') %>
 
-        <h1>My History</h1>
-
-        <div style="margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
-            <a href="/profile/<%= userId %>" style="text-decoration: none;">
-                <button style="padding: 10px 20px; background: #6c757d; color: white; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
-                    Back to Profile
-                </button>
-            </a>
-            <a href="/invoice" style="text-decoration: none;">
-                <button style="padding: 10px 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
-                    My Invoice
-                </button>
-            </a>
-        </div>
+    <h1> My History </h1>
 
         <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Product</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Total</th>
-                        <th>Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% if (data.length === 0) { %>
-                        <tr>
-                            <td colspan="6" class="empty-history">
-                                <h2>No Purchase History</h2>
-                                <p>You haven't made any purchases yet.</p>
-                            </td>
-                        </tr>
-                    <% } else { %>
-                        <% data.forEach((el, i) => { %>
-                            <tr>
-                                <td><%= i + 1 %></td>
-                                <td class="product-name"><%= el.itemProduct %></td>
-                                <td><%= el.itemQuantity %></td>
-                                <td class="price-cell">Rp <%= el.itemPrice%></td>
-                                <td class="price-cell">Rp <%= el.totalPrice %></td>
-                                <td class="date-cell" style="font-weight: bold;"><%= el.date %></td>
-                            </tr>
-                        <% }) %>
-                    <% } %>
-                </tbody>
-            </table>
-        </div>
-    </div>
 
-    <style>
-        a:has(button):hover button {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-    </style>
+    <a href="/profile/<%= userId %>"> <button> Back to profile </button></a>
+    <a href="/invoice"> <button> My Invoice </button></a>
+    <br><br>
+
+    <table border="1">
+        <tr>
+            <th>No</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Date</th>
+        </tr>
+
+        <% data.forEach( (el,i) => { %>
+             <tr>
+                <td> <%= i + 1 %> </td>
+                <td> <%= el.itemProduct %> </td>
+                <td> <%= el.itemQuantity %> </td>
+                <td> <%= el.itemPrice %> </td>
+                <td> <%= el.totalPrice %> </td>
+                <td> <%= el.date %> </td>
+             </tr>
+        <% }) %>
+    </table>
+     </div>
+ </div>
 </body>
 </html>
