@@ -1,5 +1,45 @@
+<style>
+    nav {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #e0e0e0;
+    }
+
+    nav a button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: white;
+    }
+
+    nav a[href*="products"] button {
+        background: #17a2b8;
+    }
+
+    nav a[href*="products"] button:hover {
+        background: #138496;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(23, 162, 184, 0.3);
+    }
+
+    nav a[href*="cart"] button {
+        background: #ff9800;
+    }
+
+    nav a[href*="cart"] button:hover {
+        background: #e68900;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
+    }
+</style>
+
 <nav>
-    <a href="/products"><button> Products </button></a>
-    <a href="/cart"><button> My Cart </button></a>
+    <a href="/products"><button>Products</button></a>
+    <a href="/cart"><button>My Cart</button></a>
 </nav>
-<br><br>

@@ -220,68 +220,81 @@
 </head>
 <body>
     <div class="container">
-    <%- include('partial/_navbar.ejs') %>
+        <%- include('partial/_navbar.ejs') %>
 
-    <h1>Your Cart</h1>
+        <h1>Your Cart</h1>
 
-    <a href="/products"><button> Back to Products </button></a><br><br>
+        <a href="/products" class="back-btn">Back to Products</a>
 
-    <% if (error) { %>
-        <p style="color: red;"> <%= error %> </p>
-    <% } %>
-    <br>
+        <% if (error) { %>
+            <div class="error-message" style="color: #c82333;"><%= error %></div>
+        <% } %>
+            <br>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Product</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (cart.length === 0) { %>
+                        <tr>
+                            <td colspan="6" class="empty-cart">
+                                <h2>Your cart is empty</h2>
+                                <p>Add some products to get started!</p>
+                            </td>
+                        </tr>
+                    <% } else { %>
+                        <% cart.forEach(item => { %>
+                        <tr>
+                            <td><img style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;" src="<%= item.imageURL %>" alt="<%= item.name %>"></td>
+                            <td><%= item.name %></td>
 
-    <div class="table-container">
-    <table border="1" cellpadding="8">
-        <tr>
-            <th>Image</th>
-            <th>Product</th>
-            <th>Qty</th>
-            <th>Price</th>
-            <th>Total</th>
-            <th>Action</th>
-        </tr>
+                            <td>
+                                <form action="/cart/update" method="POST" class="qty-form">
+                                    <input type="hidden" name="productId" value="<%= item.productId %>">
+                                    <input type="number" name="qty" value="<%= item.qty %>" min="1">
+                                    <button type="submit" class="update-btn">Update</button>
+                                </form>
+                            </td>
 
-        <% cart.forEach(item => { %>
-        <tr>
-            <td><img style="width: 200px;" src="<%= item.imageURL %>" alt="Image Item"></td>
-            <td><%= item.name %></td>
+                            <td>Rp <%= item.price.toLocaleString('id-ID') %></td>
+                            <td>Rp <%= (item.price * item.qty).toLocaleString('id-ID') %></td>
 
-            <td>
-                <form action="/cart/update" method="POST">
+                            <td>
+                                <a href="/cart/remove/<%= item.productId %>" class="remove-link">Remove</a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+
+        <% if (cart.length > 0) { %>
+            <div class="total-section">
+                <h2>Total Belanja: Rp <%= total.toLocaleString('id-ID') %></h2>
+            </div>
+
+            <form action="/cart/checkout" method="post">
+                <% cart.forEach(item => { %>
+                    <input type="hidden" name="userId" value="<%= user.id %>">
                     <input type="hidden" name="productId" value="<%= item.productId %>">
-                    <input type="number" name="qty" value="<%= item.qty %>" min="1">
-                    <button type="submit">Update</button>
-                </form>
-            </td>
+                    <input type="hidden" name="itemProduct" value="<%= item.name %>">
+                    <input type="hidden" name="itemQuantity" value="<%= item.qty %>">
+                    <input type="hidden" name="itemPrice" value="<%= item.price %>">
+                    <input type="hidden" name="totalPrice" value="<%= item.price * item.qty %>">
+                <% }) %>
 
-            <td>Rp <%= item.price %></td>
-            <td>Rp <%= item.price * item.qty %></td>
-
-            <td>
-                <a href="/cart/remove/<%= item.productId %>">Remove</a>
-            </td>
-        </tr>
-        <% }) %>
-    </table>
-    </div>
-
-    <div class="total-section">
-    <h2>Total Belanja: Rp <%= total %></h2>
-    </div>
-
-    <form action="/cart/checkout" method="post">
-        <% cart.forEach(item => { %>
-            <input type="hidden" name="userId" value="<%= user.id %>">
-            <input type="hidden" name="productId" value="<%= item.productId %>">
-            <input type="hidden" name="itemProduct" value="<%= item.name %>">
-            <input type="hidden" name="itemQuantity" value="<%= item.qty %>">
-            <input type="hidden" name="itemPrice" value="<%= item.price %>">
-            <input type="hidden" name="totalPrice" value="<%= item.price * item.qty %>">
-        <% }) %>
-
-        <input type="submit" value=" Checkout ">
-    </form>
+                <button type="submit" class="checkout-btn">Checkout</button>
+            </form>
+        <% } %>
     </div>
 </body>
 </html>

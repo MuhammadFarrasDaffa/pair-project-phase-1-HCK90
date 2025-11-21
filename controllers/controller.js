@@ -1,6 +1,6 @@
 const { Product, Category, User, Profile, UserProduct } = require('../models/index')
 const { getIDR } = require('../helpers/helper')
-const { Op } = require('sequelize')
+const { Op, where } = require('sequelize')
 const bcrypt = require('bcryptjs')
 
 class Controller {
@@ -101,7 +101,9 @@ class Controller {
 
             const { userId } = req.params
 
-            const data = await Profile.findByPk(userId)
+            const data = await Profile.findOne({where:{
+                UserId : userId
+            }})
 
             res.render("profile", { data, error })
         } catch (error) {
@@ -163,7 +165,7 @@ class Controller {
                     model: Category,
                     attributes: ['name']
                 }],
-                order: [['id']]
+                order: [['id','DESC']]
             })
 
             console.log(session, "ini session");

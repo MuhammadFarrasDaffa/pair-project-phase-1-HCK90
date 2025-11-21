@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products</title>
+    <title>Document</title>
     <style>
         * {
             margin: 0;
@@ -293,126 +293,75 @@
                 padding: 5px 10px;
             }
         }
-        .search-form {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-    }
-
-    .search-form input[type="text"] {
-        padding: 10px 15px;
-        border: 1px solid #e0e0e0;
-        border-radius: 6px;
-        font-size: 14px;
-        color: #555;
-        min-width: 250px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        transition: all 0.3s ease;
-    }
-
-    .search-form input[type="text"]:focus {
-        outline: none;
-        border-color: #667eea;
-        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-    }
-
-    .search-form input[type="text"]::placeholder {
-        color: #aaa;
-    }
-
-    .search-form input[type="submit"] {
-        padding: 10px 20px;
-        border: none;
-        border-radius: 6px;
-        font-size: 14px;
-        font-weight: 600;
-        cursor: pointer;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        transition: all 0.3s ease;
-    }
-
-    .search-form input[type="submit"]:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
-    }
-    .header h1 {
-        width: 100%;
-        margin-bottom: 10px;
-    }
     </style>
 </head>
 <body>
     <div class="container">
-        <%- include('partial/_navbar.ejs') %>
+    <%- include('partial/_navbar.ejs') %>
 
         <div class="header">
             <h1>Products</h1>
-            
+
             <h3>Hello <%= session.username %>, your role is <%= session.role %></h3>
             
-            <form action="/products" method="get" class="search-form">
+            <form action="/products" method="get">
                 <input type="text" name="search" placeholder="search by product name..">
                 <input type="submit" value="search">
             </form>
 
             <div class="nav-buttons">
-                <a href="/logout"><button class="btn btn-logout">Logout</button></a>
+                <a href="/logout"> <button class="btn btn-logout"> Logout </button></a>
                 <a href="/products/add"><button class="btn btn-add">Add</button></a>
-                <a href="/profile/<%= session.id %>"><button class="btn btn-profile">My Profile</button></a>
+                <a href="/profile/<%= session.id %>"><button class="btn btn-profile"> My Profile </button></a>
                 <a href="/cart"><button class="btn btn-cart">Go to Cart</button></a>
             </div>
         </div>
 
-        <% if (error) { %>
-            <div class="error-message"><%= error %></div>
-        <% } %>
+    <div class="welcome-message">
+    </div>
 
-        <% if (message) { %>
-            <div class="error-message"><%= message %></div>
-        <% } %>
+    <% if (error) { %>
+        <p style="color: red;"> <%= error %></p>
+    <% } %>
+
+    <% if (message) { %>
+        <p style="color: red;"> <%= message %></p>
+    <% } %>
 
         <div class="table-container">
-            <table>
-                <thead>
+            <table border="1">
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Product Picture</th>
+                    <th>Category</th>
+                    <th>Action</th>
+                </tr>
+
+                <% data.forEach( (el,i) => { %>
                     <tr>
-                        <th>No</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                        <th>Stock</th>
-                        <th>Product Picture</th>
-                        <th>Category</th>
-                        <th>Action</th>
+                        <td><%= i + 1 %></td>
+                        <td><%= el.name %></td>
+                        <td><%= el.description %></td>
+                        <td><%= getIDR(el.price) %></td>
+                        <td><%= el.stock %></td>
+                        <td><img style="width: 150px;" src="<%= el.productPicture %>" alt=""></td>
+                        <td><%= el.Category.name %></td>
+                        <td>
+                            <div class="action-buttons">
+                            <a href="/products/edit/<%= el.id %>"><button>Edit</button></a>
+                            <a href="/products/delete/<%= el.id %>"><button>Delete</button></a>
+                            <form action="/add-to-cart" method="POST" style="display:inline;">
+                                <input type="hidden" name="productId" value="<%= el.id %>">
+                                <button type="submit" <%= el.stock > 0 ? "" : "disabled" %>>Add to Cart</button>
+                            </form>
+                            </div>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    <% data.forEach((el, i) => { %>
-                        <tr>
-                            <td><%= i + 1 %></td>
-                            <td><%= el.name %></td>
-                            <td><%= el.description %></td>
-                            <td class="price-cell"><%= getIDR(el.price) %></td>
-                            <td class="stock-cell <%= el.stock < 10 ? 'stock-low' : 'stock-ok' %>">
-                                <%= el.stock %>
-                            </td>
-                            <td><img class="product-image" src="<%= el.productPicture %>" alt="<%= el.name %>"></td>
-                            <td><%= el.Category.name %></td>
-                            <td>
-                                <div class="action-buttons">
-                                    <a href="/products/edit/<%= el.id %>"><button class="btn-edit">Edit</button></a>
-                                    <a href="/products/delete/<%= el.id %>"><button class="btn-delete">Delete</button></a>
-                                    <form action="/add-to-cart" method="POST" style="display:inline;">
-                                        <input type="hidden" name="productId" value="<%= el.id %>">
-                                        <button type="submit" class="btn-add-cart" <%= el.stock > 0 ? "" : "disabled" %>>
-                                            Add to Cart
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                    <% }) %>
-                </tbody>
+                <% }) %>
             </table>
         </div>
     </div>
